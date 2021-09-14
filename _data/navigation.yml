@@ -1,7 +1,4 @@
-- title: Blog
+- title: Home
   url: /
 - title: About
   url: /about/
-- type: dates
-  title: Dates
-  url: /dates/
