@@ -22,7 +22,7 @@ title: 겾두의 잡동사니
 email: tkddbs2468@naver.com
 description: >- # this means to ignore newlines until "baseurl:"
   겾두의 잡 생각들이 모이는 공간입니다.
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://tkddbs2468.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
 github_username:  tkddbs2468
