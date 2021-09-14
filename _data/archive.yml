@@ -1,8 +1,11 @@
-- title: Dates
+- type: dates
+  title: Dates
   url: /dates/
-- title: Categories
+- type: categories
+  title: Categories
   url: /categories/
-- title: Tags
+- type: tags
+  title: Tags
   url: /tags/
 
 ---
