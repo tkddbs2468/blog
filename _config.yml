@@ -36,6 +36,16 @@ plugins:
 #not-pure-poole theme
 remote_theme: vszhub/not-pure-poole
 
+#avatar,bg
+avatar: /avatar.jpg
+cover_image: /bg.jpg
+
+#author
+author:
+  name: Sangyoon Lee
+  url: https://github.com/tkddbs2468/
+  email: tkddbs2468@naver.com
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

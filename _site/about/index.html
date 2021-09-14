@@ -6,37 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
-  <link rel="stylesheet" href="/blog/assets/styles.css"><!-- Begin Jekyll SEO tag v2.5.0 -->
+  <link rel="stylesheet" href="/assets/styles.css"><!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>About | 겾두의 잡동사니</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="About" />
+<meta name="author" content="Sangyoon Lee" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="겾두의 잡 생각들이 모이는 공간입니다." />
 <meta property="og:description" content="겾두의 잡 생각들이 모이는 공간입니다." />
-<link rel="canonical" href="http://localhost:4000/blog/about/" />
-<meta property="og:url" content="http://localhost:4000/blog/about/" />
+<link rel="canonical" href="http://localhost:4000/about/" />
+<meta property="og:url" content="http://localhost:4000/about/" />
 <meta property="og:site_name" content="겾두의 잡동사니" />
 <script type="application/ld+json">
-{"description":"겾두의 잡 생각들이 모이는 공간입니다.","@type":"WebSite","url":"http://localhost:4000/blog/about/","headline":"About","name":"겾두의 잡동사니","@context":"http://schema.org"}</script>
+{"description":"겾두의 잡 생각들이 모이는 공간입니다.","@type":"WebSite","url":"http://localhost:4000/about/","headline":"About","author":{"@type":"Person","name":"Sangyoon Lee"},"name":"겾두의 잡동사니","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/blog/feed.xml" title="겾두의 잡동사니" />
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="겾두의 잡동사니" />
 </head>
 
 
   <body>
 
-    <div class="container pure-g"><div class="sidebar-left pure-u-1 pure-u-md-1-4" style="background-color: rgb(40, 73, 77); color: rgb(255, 255, 255); "><header class="masthead">
-  
+    <div class="container pure-g"><div class="sidebar-left pure-u-1 pure-u-md-1-4" style="background-color: rgb(40, 73, 77); color: rgb(255, 255, 255); background-image: url(/bg.jpg);"><header class="masthead">
+  <div class="avatar"><img src="/avatar.jpg" class="avatar-image" alt="Sangyoon Lee">
+    </div>
   <div class="masthead-title">
-    <a href="/blog/" title="Home">겾두의 잡동사니</a>
+    <a href="/" title="Home">겾두의 잡동사니</a>
   </div>
   <div class="masthead-tagline">
     <small>겾두의 잡 생각들이 모이는 공간입니다.</small>
   </div><nav class="navigation">
     <ul class="navigation-list"><li class="navigation-item">
-        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/blog/">Blog</a>
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/">Blog</a>
       </li><li class="navigation-item">
-        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/blog/about/">About</a>
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/about/">About</a>
       </li></ul>
   </nav><div class="social pure-menu pure-menu-horizontal">
       <ul class="social-icons pure-menu-list">
@@ -57,23 +59,30 @@
       <div class="content pure-u-1 pure-u-md-1-2"><main>
   <article class="page">
   <h1 class="page-title">About</h1>
-  <p>This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at <a href="https://jekyllrb.com/">jekyllrb.com</a></p>
+  <hr />
+<p>프로그래밍 및 여러가지 관심가는 것에 대해 글을 쓰는 공간입니다.</p>
 
-<p>You can find the source code for Minima at GitHub:
-<a href="https://github.com/jekyll">jekyll</a> /
-<a href="https://github.com/jekyll/minima">minima</a></p>
+<!--
+This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
-<p>You can find the source code for Jekyll at GitHub:
-<a href="https://github.com/jekyll">jekyll</a> /
-<a href="https://github.com/jekyll/jekyll">jekyll</a></p>
+You can find the source code for Minima at GitHub:
+[jekyll][jekyll-organization] /
+[minima](https://github.com/jekyll/minima)
 
+You can find the source code for Jekyll at GitHub:
+[jekyll][jekyll-organization] /
+[jekyll](https://github.com/jekyll/jekyll)
+
+
+[jekyll-organization]: https://github.com/jekyll
+-->
 
 </article>
 
 </main>
 
 <footer class="footer"><small>
-    &copy; 2021 . All rights reserved.
+    &copy; 2021 <a href="https://github.com/tkddbs2468/">Sangyoon Lee</a>. All rights reserved.
     Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/vszhub/not-pure-poole">Not Pure Poole</a>.
   </small>
 </footer>
@@ -104,7 +113,7 @@
   }
 
   const forceCheckScroll = sessionStorage.getItem('forceCheckScroll') === 'true';
-  const checkScroll = strip(window.location.pathname, '/') !== strip('/blog', '/');
+  const checkScroll = strip(window.location.pathname, '/') !== strip('/', '/');
 
   if (forceCheckScroll || checkScroll) {
     const maxWidth = "(max-width: 48rem)";
