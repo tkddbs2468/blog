@@ -2,6 +2,6 @@
   url: /
 - title: About
   url: /about/
-  - type: dates
+- type: dates
   title: Dates
   url: /dates/
