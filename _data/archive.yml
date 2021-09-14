@@ -1,12 +1,12 @@
 - type: dates
   title: Dates
-  url: /dates/
+  url: /blog/dates/
 - type: categories
   title: Categories
-  url: /categories/
+  url: /blog/categories/
 - type: tags
   title: Tags
-  url: /tags/
+  url: /blog/tags/
 
 ---
 layout: archive-taxonomies
