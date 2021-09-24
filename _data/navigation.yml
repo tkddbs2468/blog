@@ -1,4 +1,6 @@
 - title: Home
   url: /
+- title: Post
+  url: /post/
 - title: About
   url: /about/
