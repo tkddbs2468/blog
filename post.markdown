@@ -10,10 +10,11 @@ permalink: /post/
 
 </div>
 
-<link rel="stylesheet" href="{{ base.url | prepend: site.url }}/assets/toastui/toastui-editor.min.css">
-<script src="{{ base.url | prepend: site.url }}/assets/toastui/toastui-editor-all.min.js"></script>
+<link rel="stylesheet" href="{{ site.baseurl | prepend: site.url }}/assets/toastui/toastui-editor.min.css">
+<script src="{{ site.baseurl | prepend: site.url }}//assets/toastui/toastui-editor-all.min.js"></script>
 
 <script>
+    
     document.addEventListener("DOMContentLoaded", function() {
         const Editor = toastui.Editor;
 
