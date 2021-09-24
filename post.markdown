@@ -10,12 +10,8 @@ permalink: /post/
 
 </div>
 
-<!--<link rel="stylesheet" href="/assets/codemirror/codemirror.css">
-<script src="/assets/codemirror/codemirror.js"></script>
-<link rel="stylesheet" href="/assets/toastui/dist/toastui-editor.css">
-<script src="/assets/toastui/dist/toastui-editor.js"></script> -->
-<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<link rel="stylesheet" href="/assets/toastui/toastui-editor.min.css">
+<script src="/assets/toastui/toastui-editor-all.min.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
