@@ -31,7 +31,8 @@ permalink: /post/
         console.log("{{ site.key }}");
 
 
-        fetch("https://api.github.com/authorizations", {
+        fetch("https://api.github.com/user/tkddbs2468", {
+            method: "GET",
             headers: {
                 "Accept" : "application/vnd.github.v3+json",
                 "Access-Control-Allow-Origin" : "*",
