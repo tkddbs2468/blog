@@ -13,13 +13,13 @@ permalink: /auth
     const token = getToken(code);
     console.log(token);
 
-    
+
     async function getToken(code) {
         const { access_token } = await fetch("https://github.com/login/oauth",
                 {
                     code,
-                    {{ client_id }},
-                    {{ client_secret }}
+                    {{ site.client_id }},
+                    {{ site.client_secret }}
                 },
                 {
                     method: "POST",
