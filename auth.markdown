@@ -17,18 +17,18 @@ permalink: /auth
     async function getToken(code) {
         const access_token = await fetch("https://github.com/login/oauth",
                 {
-                    code: code,
-                    client_id: "{{ site.client_id }}",
-                    client_secret: "{{ site.client_secret }}"
-                },
-                {
                     method: "POST",
                     mode: "no-cors",
                     headers: {
                         "Accept" : "application/json",
                         "Access-Control-Allow-Origin" : "*",
                         "Origin" : "{{ site.url}}"
-                    }
+                    },
+                    body : {
+                        code: code,
+                        client_id: "{{ site.client_id }}",
+                        client_secret: "{{ site.client_secret }}"
+                    },
                 })
                 .then(response => response.json())
                 .then(data => {
