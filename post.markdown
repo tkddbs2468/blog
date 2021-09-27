@@ -28,18 +28,22 @@ permalink: /post/
     const onSubmit = (event) => {
         event.preventDefault();
         console.log(editor.getMarkdown());
+        console.log("{{ site.key }}");
 
-        fetch("https://api.githuib.com/users/tkddbs2468", {
+
+        fetch("https://api.github.com/authorizations", {
             headers: {
                 "Accept" : "application/vnd.github.v3+json",
                 "Access-Control-Allow-Origin" : "*",
-                "Authentication" : "{{ site.key }}"
+                "Access-Control-Allow-Headers" : "X-Requested-With",
+                "Authorization" : "token {{ site.key }}"
             }
         })
         .then(response => response.json())
         .then(data => {
             console.log(data);
-        });
+        })
+        .catch(error => console.log(error));
     }
 
 </script>
