@@ -26,6 +26,7 @@ permalink: /auth
                     mode: "no-cors",
                     headers: {
                         "Accept" : "application/json",
+                        "Access-Control-Allow-Origin" : "*",
                         "Origin" : "{{ site.url}}"
                     }
                 })
