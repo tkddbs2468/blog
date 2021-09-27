@@ -31,6 +31,27 @@ permalink: /post/
         console.log("{{ site.key }}");
 
 
+        fetch("https://github.com/login/oauth/access_token?client_id=tkddbs2468&client_secret={{ site.key }}", {
+            headers: {
+                "Authorization" : "{{ site.key }}",
+                "Accept" : "application/vnd.github.v3+json",
+                "Access-Control-Allow-Origin" : "*",
+                "Access-Control-Allow-Headers" : "X-Requested-With",
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.log(error));
+    }
+
+    const onSubmit2 = (event) => {
+        event.preventDefault();
+        console.log(editor.getMarkdown());
+        console.log("{{ site.key }}");
+
+
         fetch("https://api.github.com/user/tkddbs2468", {
             method: "GET",
             headers: {

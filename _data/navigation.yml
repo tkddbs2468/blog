@@ -2,5 +2,7 @@
   url: /
 - title: Post
   url: /post/
+- title: Login
+  url: /login/
 - title: About
   url: /about/
