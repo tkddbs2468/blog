@@ -32,7 +32,8 @@ permalink: /post/
         fetch("https://api.githuib.com/users/tkddbs2468", {
             headers: {
                 "Accept" : "application/vnd.github.v3+json",
-                "Access-Control-Allow-Origin" : "*"
+                "Access-Control-Allow-Origin" : "*",
+                "Authentication" : "{{ site.key }}"
             }
         })
         .then(response => response.json())

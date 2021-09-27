@@ -46,6 +46,10 @@ author:
   url: https://github.com/tkddbs2468/
   email: tkddbs2468@naver.com
 
+#github token key
+key: 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 
+
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
