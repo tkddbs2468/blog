@@ -18,7 +18,7 @@ permalink: /auth
         const access_token = await fetch("https://github.com/login/oauth/access_token",
                 {
                     method: "POST",
-                    mode: "no-cors",
+                    mode: "cors",
                     headers: {
                         "Accept" : "application/json",
                         "Content-Type" : "application/json",
