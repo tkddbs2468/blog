@@ -18,8 +18,8 @@ permalink: /auth
         const { access_token } = await fetch("https://github.com/login/oauth",
                 {
                     code: code,
-                    client_id: {{ site.client_id }},
-                    client_secret: {{ site.client_secret }}
+                    client_id: "{{ site.client_id }}",
+                    client_secret: "{{ site.client_secret }}"
                 },
                 {
                     method: "POST",
