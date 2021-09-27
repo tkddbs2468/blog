@@ -15,7 +15,7 @@ permalink: /auth
 
 
     async function getToken(code) {
-        const access_token = await fetch("https://github.com/login/oauth",
+        const access_token = await fetch("https://github.com/login/oauth/access_token",
                 {
                     method: "POST",
                     mode: "no-cors",
@@ -30,9 +30,8 @@ permalink: /auth
                         client_secret: "{{ site.client_secret }}"
                     },
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
+                .then(response => console.log(response))
+               
                 })
                 .catch(error => console.log(error));
     }
