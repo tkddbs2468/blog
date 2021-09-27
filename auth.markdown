@@ -23,8 +23,10 @@ permalink: /auth
                 },
                 {
                     method: "POST",
+                    mode: "no-cors",
                     headers: {
                         "Accept" : "application/json",
+                        "Origin" : "{{ site.url}}"
                     }
                 })
                 .then(response => response.json())
