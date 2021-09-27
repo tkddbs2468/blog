@@ -21,10 +21,11 @@ permalink: /auth
                     mode: "cors",
                     headers: {
                         "Accept" : "application/json",
-                        "Content-Type" : "application/json",
+                        "Accept-Language" : "*",
+                        "Content-Langeuage" : "en-US",
+                        "Content-Type" : "text/plain",
                         "Access-Control-Allow-Origin" : "*",
                         "Origin" : "{{ site.url}}",
-                        "Accept-Encoding" : "UTF-8"
                     },
                     body : {
                         code: code,
