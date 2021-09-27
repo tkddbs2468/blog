@@ -17,9 +17,9 @@ permalink: /auth
     async function getToken(code) {
         const { access_token } = await fetch("https://github.com/login/oauth",
                 {
-                    code,
-                    "{{ site.client_id }}",
-                    "{{ site.client_secret }}"
+                    code: code,
+                    client_id: {{ site.client_id }},
+                    client_secret: {{ site.client_secret }}
                 },
                 {
                     method: "POST",
