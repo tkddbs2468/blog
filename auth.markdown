@@ -23,7 +23,8 @@ permalink: /auth
                         "Accept" : "application/json",
                         "Content-Type" : "application/json",
                         "Access-Control-Allow-Origin" : "*",
-                        "Origin" : "{{ site.url}}"
+                        "Origin" : "{{ site.url}}",
+                        "Accept-Encoding" : "UTF-8"
                     },
                     body : {
                         code: code,
