@@ -53,7 +53,10 @@ client_secret: b4873a95f775e2730e15cb2e0c9c5d8d92df3b43
 #client_secret: ad9da06bf1cc28006e5e6a9f5f8a48806410cf0a
 
 #personal access token
-token: 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 
+token: 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 
+
+# set timezone
+timezone: Asia/Seoul
 
 # Exclude from processing.
 # The following items will not be processed, by default.

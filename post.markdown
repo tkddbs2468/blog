@@ -5,7 +5,7 @@ permalink: /post/
 ---
 
 ---
-
+<input type="text" id="title">
 <div id="editor"></div>
 <input type="submit" onclick="onSubmit(event)">
 
@@ -40,10 +40,39 @@ permalink: /post/
         event.preventDefault();
 
         const markdown = editor.getMarkdown();
-        
-        console.log("{{ site.token }}");
 
-        const blob = new Blob([markdown], { type : "text/plain;charset=utf-8" });
+        const title = document.querySelector("#title").value;
+        const date = new Date();
+        
+        // const categories = document.querySelector("#categories").value;
+        // const tags = document.querySelector("#tags").value;
+        const dateString = date.toISOString().substr(0, 10);
+        const dateTimeString = date.toISOString().substr(0, 19).replace("T", " ");
+        const timezoneOffset = date.getTimezoneOffset() / 60 * 100 * (-1);
+        const timezoneSign = Math.sign(timezoneOffset) >= 0 ? "+" : "-";
+        
+        const timezone = timezoneSign + ("0" + timezoneOffset.toString().replace("+","").replace("-","").replace(".", "")).slice(-4);
+        const fileName = `${dateString}-${title}.markdown`;
+
+        let description = "";
+        description += "---" + "\n";
+        description += "layout: post" + "\n";
+        description += "title: " + title + "\n";
+        description += "date: " + dateTimeString + " " + timezone + "\n";
+        // description += "categories: " + categories + "\n";
+        // description += "tags: " + tags + "\n";
+        description += "---" + "\n"
+
+        // ---
+        // layout: post
+        // title:  "test"
+        // date:   2021-09-29 22:24:36 +0900
+        // categories: jekyll update
+        // tags: ex1 ex2
+        // ---
+
+        console.log(description + markdown);
+        const blob = new Blob([description + markdown], { type : "text/plain;charset=utf-8" });
         
         await toBase64(blob);
         const dataURI = localStorage.getItem("file");
@@ -52,14 +81,14 @@ permalink: /post/
         console.log(content);
 
         const parameters = {
-            message: "test",
+            message: fileName + " Upload",
             content: content,
         }
-        await fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_posts/" + "2021-09-13-test!!.markdown", {
+        await fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_post/" + fileName, {
             method: "PUT",
             headers: {
                 "Accept" : "application/vnd.github.v3+json",
-                "Authorization" : "token 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"
+                "Authorization" : "token {{ site:token }}"
             },
             body: JSON.stringify(parameters)
         })
@@ -69,49 +98,18 @@ permalink: /post/
         })
         .catch(error => console.log(error));
 
-        // fetch("https://api.github.com/users/tkddbs2468", {
+        // fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_posts", {
         //     method: "GET",
         //     headers: {
         //         "Accept" : "application/vnd.github.v3+json",
-        //         //"Access-Control-Allow-Origin" : "*",
-        //         //"Access-Control-Allow-Headers" : "X-Requested-With",
-        //         "Authorization" : "token {{ site.token }}"
-        //     }
+        //         "Authorization" : "token {{ site:token }} "
+        //     },
         // })
         // .then(response => response.json())
         // .then(data => {
         //     console.log(data);
         // })
         // .catch(error => console.log(error));
-
-        fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_posts", {
-            method: "GET",
-            headers: {
-                "Accept" : "application/vnd.github.v3+json",
-                "Authorization" : "token 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 "
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => console.log(error));
     }
 
 </script>
-
-
-<!--
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
--->
