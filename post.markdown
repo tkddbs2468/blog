@@ -25,42 +25,50 @@ permalink: /post/
         previewStyle: "vertical"
     });
         
-    const onSubmit = (event) => {
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            resolve(reader.result);
+            console.log(reader);
+            localStorage.setItem("file", reader.result);    
+        }
+        reader.onerror = error => reject(error);
+    });
+
+    const onSubmit = async (event) => {
         event.preventDefault();
-        console.log(editor.getMarkdown());
+
+        const markdown = editor.getMarkdown();
+        
         console.log("{{ site.token }}");
 
-        const blob = new Blob([editor.getMarkdown()], { type : "text/plain;charset=utf-8" });
+        const blob = new Blob([markdown], { type : "text/plain;charset=utf-8" });
         
-        console.log(blob);
-        const file = new File([blob], "test.markdown")
-
-        console.log(file);
-
-        const fileReader = new FileReader();
-
-        fileReader.readAsDataURL(file);
-        const test = btoa(editor.getMarkdown());
-        console.log(test);
-        const content = btoa(file);
+        await toBase64(blob);
+        const dataURI = localStorage.getItem("file");
+        const content = dataURI.split(',')[1];
 
         console.log(content);
-        fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_posts/test.markdown", {
+
+        const parameters = {
+            message: "test",
+            content: content,
+        }
+        await fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_posts/" + "2021-09-13-test!!.markdown", {
             method: "PUT",
             headers: {
                 "Accept" : "application/vnd.github.v3+json",
-                "Authorization" : "token {{ site.token }}"
+                "Authorization" : "token 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"
             },
-            body: {
-                message: "test",
-                content: content
-            }
+            body: JSON.stringify(parameters)
         })
         .then(response => response.json())
         .then(data => {
             console.log(data);
         })
         .catch(error => console.log(error));
+
         // fetch("https://api.github.com/users/tkddbs2468", {
         //     method: "GET",
         //     headers: {
@@ -80,7 +88,7 @@ permalink: /post/
             method: "GET",
             headers: {
                 "Accept" : "application/vnd.github.v3+json",
-                "Authorization" : "token {{ site.token }}"
+                "Authorization" : "token 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 "
             },
         })
         .then(response => response.json())
