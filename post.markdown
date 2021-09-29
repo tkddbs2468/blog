@@ -24,23 +24,36 @@ permalink: /post/
         initialEditType: "markdown",
         previewStyle: "vertical"
     });
-    
+        
     const onSubmit = (event) => {
         event.preventDefault();
         console.log(editor.getMarkdown());
         console.log("{{ site.token }}");
 
-        fetch("https://api.github.com/repos/tkddbs2468/blog/git/commits", {
-            method: "POST",
+        const blob = new Blob([editor.getMarkdown()], { type : "text/plain;charset=utf-8" });
+        
+        console.log(blob);
+        const file = new File([blob], "test.markdown")
+
+        console.log(file);
+
+        const fileReader = new FileReader();
+
+        fileReader.readAsDataURL(file);
+        const test = btoa(editor.getMarkdown());
+        console.log(test);
+        const content = btoa(file);
+
+        console.log(content);
+        fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_posts/test.markdown", {
+            method: "PUT",
             headers: {
                 "Accept" : "application/vnd.github.v3+json",
-                //"Access-Control-Allow-Origin" : "*",
-                //"Access-Control-Allow-Headers" : "X-Requested-With",
                 "Authorization" : "token {{ site.token }}"
             },
             body: {
                 message: "test",
-                tree: "tree"
+                content: content
             }
         })
         .then(response => response.json())
@@ -62,6 +75,19 @@ permalink: /post/
         //     console.log(data);
         // })
         // .catch(error => console.log(error));
+
+        fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_posts", {
+            method: "GET",
+            headers: {
+                "Accept" : "application/vnd.github.v3+json",
+                "Authorization" : "token {{ site.token }}"
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.log(error));
     }
 
 </script>

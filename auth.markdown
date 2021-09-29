@@ -13,9 +13,44 @@ permalink: /auth
 
     // location.href="https://github.com/login/oauth/access_token?client_id={{ site.client_id }}&client_secret={{ site.client_secret }}&code=" + code;
 
+    const form = document.createElement("form");
+    form.setAttribute("method", "POST");
+    form.setAttribute("action", "https://github.com/login/oauth/access_token");
+    
+    const codeInput = document.createElement("input");
+    codeInput.setAttribute("type", "hidden");
+    codeInput.setAttribute("name", "code");
+    codeInput.setAttribute("value", code);
+    form.appendChild(codeInput);
 
-    const token = getToken(code);
-    console.log(token);
+    const clientIdInput = document.createElement("input");
+    clientIdInput.setAttribute("type", "hidden");
+    clientIdInput.setAttribute("name", "client_id");
+    clientIdInput.setAttribute("value", "{{ site.client_id }}");
+    form.appendChild(clientIdInput);
+
+    const clientSecretInput = document.createElement("input");
+    clientSecretInput.setAttribute("type", "hidden");
+    clientSecretInput.setAttribute("name", "client_secret");
+    clientSecretInput.setAttribute("value", "{{ site.client_secret }}");
+    form.appendChild(clientSecretInput);
+
+    document.body.appendChild(form);
+    
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        console.log("123");
+    })
+
+    form.submit();
+
+    console.log(form);
+
+    //const token = getToken(code);
+    //console.log(token);
+
+    
+
 
     // fetch("https://api.github.com/user", {
     //             method: "GET",
@@ -33,7 +68,7 @@ permalink: /auth
     //         .catch(error => console.log(error));
 
     async function getToken(code) {
-        const access_token = await fetch("{{ site.url }}/login/oauth/access_token",
+        const access_token = await fetch("https://github.com/login/oauth/access_token",
                 {
                     method: "POST",
                     headers: {
