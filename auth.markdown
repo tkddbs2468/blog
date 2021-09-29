@@ -33,7 +33,7 @@ permalink: /auth
     //         .catch(error => console.log(error));
 
     async function getToken(code) {
-        const access_token = await fetch("{{ site.baseurl | prepend: site.url }}login/oauth/access_token",
+        const access_token = await fetch("{{ site.url }}login/oauth/access_token",
                 {
                     method: "POST",
                     headers: {
