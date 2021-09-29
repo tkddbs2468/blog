@@ -28,15 +28,19 @@ permalink: /post/
     const onSubmit = (event) => {
         event.preventDefault();
         console.log(editor.getMarkdown());
-        console.log("{{ site.key }}");
+        console.log("{{ site.token }}");
 
-
-        fetch("https://github.com/login/oauth/access_token?client_id=tkddbs2468&client_secret={{ site.key }}", {
+        fetch("https://api.github.com/repos/tkddbs2468/blog/git/commits", {
+            method: "POST",
             headers: {
-                "Authorization" : "{{ site.key }}",
                 "Accept" : "application/vnd.github.v3+json",
-                "Access-Control-Allow-Origin" : "*",
-                "Access-Control-Allow-Headers" : "X-Requested-With",
+                //"Access-Control-Allow-Origin" : "*",
+                //"Access-Control-Allow-Headers" : "X-Requested-With",
+                "Authorization" : "token {{ site.token }}"
+            },
+            body: {
+                message: "test",
+                tree: "tree"
             }
         })
         .then(response => response.json())
@@ -44,28 +48,20 @@ permalink: /post/
             console.log(data);
         })
         .catch(error => console.log(error));
-    }
-
-    const onSubmit2 = (event) => {
-        event.preventDefault();
-        console.log(editor.getMarkdown());
-        console.log("{{ site.key }}");
-
-
-        fetch("https://api.github.com/user/tkddbs2468", {
-            method: "GET",
-            headers: {
-                "Accept" : "application/vnd.github.v3+json",
-                "Access-Control-Allow-Origin" : "*",
-                "Access-Control-Allow-Headers" : "X-Requested-With",
-                "Authorization" : "token {{ site.key }}"
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => console.log(error));
+        // fetch("https://api.github.com/users/tkddbs2468", {
+        //     method: "GET",
+        //     headers: {
+        //         "Accept" : "application/vnd.github.v3+json",
+        //         //"Access-Control-Allow-Origin" : "*",
+        //         //"Access-Control-Allow-Headers" : "X-Requested-With",
+        //         "Authorization" : "token {{ site.token }}"
+        //     }
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data);
+        // })
+        // .catch(error => console.log(error));
     }
 
 </script>
