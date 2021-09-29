@@ -17,20 +17,20 @@ permalink: /auth
     const token = getToken(code);
     console.log(token);
 
-    fetch("https://api.github.com/user", {
-                method: "GET",
-                headers: {
-                    "Accept" : "application/vnd.github.v3+json",
-                    //"Access-Control-Allow-Origin" : "*",
-                    //"Access-Control-Allow-Headers" : "X-Requested-With",
-                    "Authorization" : "token {{ site.token }}"
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => console.log(error));
+    // fetch("https://api.github.com/user", {
+    //             method: "GET",
+    //             headers: {
+    //                 "Accept" : "application/vnd.github.v3+json",
+    //                 //"Access-Control-Allow-Origin" : "*",
+    //                 //"Access-Control-Allow-Headers" : "X-Requested-With",
+    //                 "Authorization" : "token {{ site.token }}"
+    //             }
+    //         })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data);
+    //         })
+    //         .catch(error => console.log(error));
 
     async function getToken(code) {
         const access_token = await fetch("{{ site.baseurl | prepend: site.url }}login/oauth/access_token",
