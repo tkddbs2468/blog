@@ -39,6 +39,8 @@ permalink: /post/
     const onSubmit = async (event) => {
         event.preventDefault();
 
+        const token = atob("{{ site:token }}");
+
         const markdown = editor.getMarkdown();
 
         const title = document.querySelector("#title").value;
@@ -88,7 +90,7 @@ permalink: /post/
             method: "PUT",
             headers: {
                 "Accept" : "application/vnd.github.v3+json",
-                "Authorization" : "token {{ site:token }}"
+                "Authorization" : "token " + token
             },
             body: JSON.stringify(parameters)
         })
@@ -102,7 +104,7 @@ permalink: /post/
         //     method: "GET",
         //     headers: {
         //         "Accept" : "application/vnd.github.v3+json",
-        //         "Authorization" : "token {{ site:token }} "
+        //         "Authorization" : "token " + token
         //     },
         // })
         // .then(response => response.json())

@@ -13,64 +13,47 @@ permalink: /auth
 
     // location.href="https://github.com/login/oauth/access_token?client_id={{ site.client_id }}&client_secret={{ site.client_secret }}&code=" + code;
 
-    const form = document.createElement("form");
-    form.setAttribute("method", "POST");
-    form.setAttribute("action", "https://github.com/login/oauth/access_token");
+    // const form = document.createElement("form");
+    // form.setAttribute("method", "POST");
+    // form.setAttribute("action", "https://github.com/login/oauth/access_token");
     
-    const codeInput = document.createElement("input");
-    codeInput.setAttribute("type", "hidden");
-    codeInput.setAttribute("name", "code");
-    codeInput.setAttribute("value", code);
-    form.appendChild(codeInput);
+    // const codeInput = document.createElement("input");
+    // codeInput.setAttribute("type", "hidden");
+    // codeInput.setAttribute("name", "code");
+    // codeInput.setAttribute("value", code);
+    // form.appendChild(codeInput);
 
-    const clientIdInput = document.createElement("input");
-    clientIdInput.setAttribute("type", "hidden");
-    clientIdInput.setAttribute("name", "client_id");
-    clientIdInput.setAttribute("value", "{{ site.client_id }}");
-    form.appendChild(clientIdInput);
+    // const clientIdInput = document.createElement("input");
+    // clientIdInput.setAttribute("type", "hidden");
+    // clientIdInput.setAttribute("name", "client_id");
+    // clientIdInput.setAttribute("value", "{{ site.client_id }}");
+    // form.appendChild(clientIdInput);
 
-    const clientSecretInput = document.createElement("input");
-    clientSecretInput.setAttribute("type", "hidden");
-    clientSecretInput.setAttribute("name", "client_secret");
-    clientSecretInput.setAttribute("value", "{{ site.client_secret }}");
-    form.appendChild(clientSecretInput);
+    // const clientSecretInput = document.createElement("input");
+    // clientSecretInput.setAttribute("type", "hidden");
+    // clientSecretInput.setAttribute("name", "client_secret");
+    // clientSecretInput.setAttribute("value", "{{ site.client_secret }}");
+    // form.appendChild(clientSecretInput);
 
-    document.body.appendChild(form);
+    // document.body.appendChild(form);
     
-    form.addEventListener("submit", function(event) {
-        event.preventDefault();
-        console.log("123");
-    })
+    // form.addEventListener("submit", function(event) {
+    //     event.preventDefault();
+    //     console.log("123");
+    // })
 
-    form.submit();
+    // form.submit();
 
-    console.log(form);
+    // console.log(form);
 
-    //const token = getToken(code);
-    //console.log(token);
-
-    
-
-
-    // fetch("https://api.github.com/user", {
-    //             method: "GET",
-    //             headers: {
-    //                 "Accept" : "application/vnd.github.v3+json",
-    //                 //"Access-Control-Allow-Origin" : "*",
-    //                 //"Access-Control-Allow-Headers" : "X-Requested-With",
-    //                 "Authorization" : "token {{ site.token }}"
-    //             }
-    //         })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log(data);
-    //         })
-    //         .catch(error => console.log(error));
+    const token = getToken(code);
+    console.log(token);
 
     async function getToken(code) {
         const access_token = await fetch("https://github.com/login/oauth/access_token",
                 {
                     method: "POST",
+                    mode: "no-cors",
                     headers: {
                         // "Accept-Language" : "*",
                         // "Content-Langeuage" : "en-US",
@@ -79,7 +62,7 @@ permalink: /auth
                         // "Access-Control-Allow-Headers" : "GET, POST",
                         // "Access-Control-Allow-Methods" : "Origin, Content-Type, X-Auth-Token",
                         // "Origin" : "{{ site.url}}",
-                        "Accept" : "application/json",
+                        // "Accept" : "application/json",
                     },
                     body : {
                         code: code,
