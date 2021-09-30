@@ -86,7 +86,7 @@ permalink: /post/
             message: fileName + " Upload",
             content: content,
         }
-        await fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_post/" + fileName, {
+        await fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_posts/" + fileName, {
             method: "PUT",
             headers: {
                 "Accept" : "application/vnd.github.v3+json",
