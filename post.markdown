@@ -6,8 +6,8 @@ permalink: /post/
 
 ---
 <h2>TITLE : <input type="text" id="title" placeholder="제목을 입력하세요."></h2>
-<h2>CATEGORIES : <input type="text" id="title" placeholder="띄어쓰기로 구분하세요."></h2>
-<h2>TAGS : <input type="text" id="title" placeholder="띄어쓰기로 구분하세요."></h2>
+<h2>CATEGORIES : <input type="text" id="categories" placeholder="띄어쓰기로 구분하세요."></h2>
+<h2>TAGS : <input type="text" id="tags" placeholder="띄어쓰기로 구분하세요."></h2>
 <br>
 <div id="editor"></div>
 <input type="submit" value="포스팅" onclick="onSubmit(event)">
