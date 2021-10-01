@@ -48,11 +48,11 @@ author:
 
 #blog app info
 #github-pages
-#client_id: 9092637f9c95883e7fa2
-#client_secret: b4873a95f775e2730e15cb2e0c9c5d8d92df3b43 
+client_id: 9092637f9c95883e7fa2
+client_secret: b4873a95f775e2730e15cb2e0c9c5d8d92df3b43 
 #localhost
-client_id: 2c42bf5d57bfab58f14c
-client_secret: ad9da06bf1cc28006e5e6a9f5f8a48806410cf0a
+#client_id: 2c42bf5d57bfab58f14c
+#client_secret: ad9da06bf1cc28006e5e6a9f5f8a48806410cf0a
 
 #personal access token
 token: Z2hwX04zSnlGTTV3Y0dnNVhBWGRTNndQTHV0TTBETEwyUjJLeWZGZg==

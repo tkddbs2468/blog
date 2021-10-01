@@ -5,12 +5,31 @@ permalink: /post/
 ---
 
 ---
-<input type="text" id="title">
+<h2>TITLE : <input type="text" id="title" placeholder="제목을 입력하세요."></h2>
+<h2>CATEGORIES : <input type="text" id="title" placeholder="띄어쓰기로 구분하세요."></h2>
+<h2>TAGS : <input type="text" id="title" placeholder="띄어쓰기로 구분하세요."></h2>
+<br>
 <div id="editor"></div>
-<input type="submit" onclick="onSubmit(event)">
+<input type="submit" value="포스팅" onclick="onSubmit(event)">
 
 <link rel="stylesheet" href="{{ site.baseurl | prepend: site.url }}/assets/toastui/toastui-editor.min.css">
 <script src="{{ site.baseurl | prepend: site.url }}//assets/toastui/toastui-editor-all.min.js"></script>
+
+<style>
+input[type="submit"] {
+  background-color: lightgray;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+</style>
 
 <script>
     
@@ -30,7 +49,6 @@ permalink: /post/
         reader.readAsDataURL(file);
         reader.onload = () => {
             resolve(reader.result);
-            console.log(reader);
             localStorage.setItem("file", reader.result);    
         }
         reader.onerror = error => reject(error);
@@ -38,16 +56,28 @@ permalink: /post/
 
     const onSubmit = async (event) => {
         event.preventDefault();
-
+        
         const token = atob("{{ site:token }}");
 
         const markdown = editor.getMarkdown();
 
         const title = document.querySelector("#title").value;
+        if(title === "") {
+            alert("제목을 입력하세요.");
+            return false; 
+        }
+
+        let isPosting = confirm("포스팅하시겠습니까?");
+        if(!isPosting) {
+            return false;
+        } else {
+
+        }
+
         const date = new Date();
         
-        // const categories = document.querySelector("#categories").value;
-        // const tags = document.querySelector("#tags").value;
+        const categories = document.querySelector("#categories").value;
+        const tags = document.querySelector("#tags").value;
         const dateString = date.toISOString().substr(0, 10);
         const dateTimeString = date.toISOString().substr(0, 19).replace("T", " ");
         const timezoneOffset = date.getTimezoneOffset() / 60 * 100 * (-1);
@@ -61,8 +91,8 @@ permalink: /post/
         description += "layout: post" + "\n";
         description += "title: " + title + "\n";
         description += "date: " + dateTimeString + " " + timezone + "\n";
-        // description += "categories: " + categories + "\n";
-        // description += "tags: " + tags + "\n";
+        description += "categories: " + categories + "\n";
+        description += "tags: " + tags + "\n";
         description += "---" + "\n"
 
         // ---
@@ -78,9 +108,8 @@ permalink: /post/
         
         await toBase64(blob);
         const dataURI = localStorage.getItem("file");
+        localStorage.removeItem("file");
         const content = dataURI.split(',')[1];
-
-        console.log(content);
 
         const parameters = {
             message: fileName + " Upload",
@@ -100,18 +129,7 @@ permalink: /post/
         })
         .catch(error => console.log(error));
 
-        // fetch("https://api.github.com/repos/tkddbs2468/blog/contents/_posts", {
-        //     method: "GET",
-        //     headers: {
-        //         "Accept" : "application/vnd.github.v3+json",
-        //         "Authorization" : "token " + token
-        //     },
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     console.log(data);
-        // })
-        // .catch(error => console.log(error));
+        // location.href="{{ site.baseurl | prepend: site.url }}";
     }
 
 </script>
